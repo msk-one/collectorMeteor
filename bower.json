@@ -1,0 +1,20 @@
+{
+  "name": "collector",
+  "version": "0.0.1",
+  "license": "commercial",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    ".meteor/local/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  },
+  "overrides": {
+    "angular": {
+      "main": [] 
+    }
+  }
+}
