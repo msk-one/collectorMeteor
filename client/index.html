@@ -1,6 +1,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="/">
+    <title>Collector Meteor</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <link rel="stylesheet" href="css/AdminLTE.min.css">
@@ -17,7 +18,7 @@
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><img src="img/logo.png" id="mainLogo" alt="Collector"></span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Collector</b></span>
+            <span class="logo-lg"><b>Collector</b><img src="img/logo.png" id="mainLogoHeader" alt="Collector"></span>
         </a>
 
         <!-- Header Navbar -->
@@ -35,16 +36,21 @@
                         <!-- Menu toggle button -->
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
+                            <span class="label label-danger">2</span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
+                            <li class="header">You have 2 notifications!</li>
                             <li>
                                 <!-- Inner Menu: contains the notifications -->
                                 <ul class="menu">
                                     <li><!-- start notification -->
                                         <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                            <i class="fa fa-usd text-aqua"></i> $5 to Adam should be returned soon!
+                                        </a>
+                                    </li>
+                                    <li><!-- start notification -->
+                                        <a href="#">
+                                            <i class="fa fa-cubes text-aqua"></i> GTA V to Msk should be returned soon!
                                         </a>
                                     </li>
                                     <!-- end notification -->
@@ -67,47 +73,11 @@
                             <!-- The user image in the menu -->
                             <li class="user-header">
                                 <img src="img/cinos.jpg" class="img-circle" alt="User Image">
-
                                 <p>
                                     Cinos150 - Cinos150
                                     <small>ULTIMATE PREMIUM MEMBER</small>
                                 </p>
-
-
                             </li>
-
-                            <li class="user-body">
-                                <div class="info-box bg-red">
-                                    <span class="info-box-icon"><i class="fa fa-battery-three-quarters"></i></span>
-                                    <div class="info-box-content">
-                                        <span class="info-box-text">LIKES</span>
-                                        <span class="info-box-number">OVER 9,000</span>
-                                        <!-- The progress section is optional -->
-                                        <div class="progress">
-                                            <div class="progress-bar" style="width: 70%"></div>
-                                        </div>
-                                    <span class="progress-description">
-                                        9000% Increase!
-                                    </span>
-                                    </div><!-- /.info-box-content -->
-                                </div><!-- /.info-box -->
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="row">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-                            </li>
-                            <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
                                     <a href="#" class="btn btn-default btn-flat">Profile</a>
@@ -173,13 +143,13 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                Welcome
+                <small>to Collector Meteor application.</small>
             </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
+            <!--<ol class="breadcrumb">-->
+                <!--<li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>-->
+                <!--<li class="active">Here</li>-->
+            <!--</ol>-->
         </section>
 
         <!-- Main content -->
@@ -207,29 +177,10 @@
                 <ul class="control-sidebar-menu">
                     <li>
                         <a href="javascript::;">
-                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
+                            <i class="menu-icon fa fa-cubes bg-red"></i>
                             <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                                <p>Will be 23 on April 24th</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <!-- /.control-sidebar-menu -->
-
-                <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class="control-sidebar-menu">
-                    <li>
-                        <a href="javascript::;">
-                            <h4 class="control-sidebar-subheading">
-                                Custom Template Design
-                                <span class="label label-danger pull-right">70%</span>
-                            </h4>
-
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                                <h4 class="control-sidebar-subheading">You have borrowed</h4>
+                                <p>1 GTA V from Msk.</p>
                             </div>
                         </a>
                     </li>
@@ -248,16 +199,35 @@
 
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
-                            Report panel usage
+                            Report usage
                             <input type="checkbox" class="pull-right" checked>
                         </label>
-
                         <p>
-                            Some information about this general settings option
+                            Send some anonymous info about app usage.
                         </p>
                     </div>
                     <!-- /.form-group -->
                 </form>
+
+                <form method="post">
+                    <h3 class="control-sidebar-heading">Object categories</h3>
+
+                    <div class="form-group">
+                        <label class="control-sidebar-subheading">
+                            Create new category <br />
+                            <input type="text" class="form-control" id="inputCat" placeholder="Name of category">
+                        </label>
+                        <button type="submit" class="btn btn-default btn-flat">Add</button>
+                    </div>
+                    <!-- /.form-group -->
+                </form>
+                <label class="control-sidebar-subheading">
+                    Existing categories:
+                </label>
+                <div>
+
+
+                </div>
             </div>
             <!-- /.tab-pane -->
         </div>
