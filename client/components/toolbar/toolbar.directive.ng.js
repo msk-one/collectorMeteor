@@ -1,9 +1,7 @@
-'use strict'
-
 angular.module('collectorApp')
 .directive('toolbar', function() {
   return {
-    restrict: 'AE',
+    restrict: 'E',
     templateUrl: 'client/components/toolbar/toolbar.view.ng.html',
     replace: true
   };
