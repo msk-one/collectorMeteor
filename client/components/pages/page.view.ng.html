@@ -1,14 +1,16 @@
-<div class="col-xs-12">
+<div class="col-xs-12" ng-show="showBMoney">
     <div class="box">
         <div class="box-header">
-            <h3 class="box-title">Borrowed entries, Money</h3>
+            <h3 class="box-title">Money entries, (type2)</h3>
 
-            <div class="box-tools">
+            <div class="box-tools" ng-show="objectsType">
                 <div class="input-group input-group-sm" style="width: 150px;">
-                    <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
+                    <select class="form-control pull-right">
+                        <option>Cat 1</option>
+                        <option>Cat 2</option>
+                    </select>
                     <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                        <button type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button>
                     </div>
                 </div>
             </div>
@@ -16,7 +18,8 @@
         <!-- /.box-header -->
         <div class="box-body table-responsive no-padding">
             <table class="table table-hover">
-                <tbody><tr>
+                <tbody>
+                <tr>
                     <th>Name</th>
                     <th>Who?</th>
                     <th>Date</th>
@@ -43,7 +46,8 @@
                     <td>$2000</td>
                     <td><span class="label label-danger">Hot</span></td>
                 </tr>
-                </tbody></table>
+                </tbody>
+            </table>
         </div>
         <!-- /.box-body -->
     </div>
