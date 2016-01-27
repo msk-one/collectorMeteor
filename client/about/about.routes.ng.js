@@ -1,5 +1,3 @@
-'use strict'
-
 angular.module('collectorApp')
 .config(function($stateProvider) {
   $stateProvider

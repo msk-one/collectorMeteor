@@ -4,7 +4,14 @@ angular.module('collectorApp')
             restrict: 'E',
             templateUrl: 'client/components/sidebar/control.view.ng.html',
             replace: true,
-            controller: function($scope, $http) {
+            controller: function($scope, $http, $reactive, $state) {
+                $reactive(this).attach($scope);
+
+                $scope.redirectAbout = function () {
+                    $state.go('about');
+                    location.reload();
+                };
+
                 $scope.propCategories = [
                     {
                         "cid": 1,
@@ -20,7 +27,20 @@ angular.module('collectorApp')
                     }
                 ];
 
-                
+                $scope.nCat = {
+                    cid: '',
+                    cname: ''
+                };
+
+                $scope.addCategory = function() {
+                    $scope.propCategories.push($scope.nCat);
+                    $scope.nCat = {};
+                };
+
+                $scope.removeCategory = function(ctr) {
+                    var index = $scope.propCategories.indexOf(ctr);
+                    $scope.propCategories.splice(index, 1);
+                };
             },
             controllerAs: "sidebarControlCtrl"
         };

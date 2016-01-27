@@ -1,10 +1,10 @@
 angular.module('collectorApp')
-    .directive('mainSidebar', function() {
+    .directive('mainSidebar', function () {
         return {
             restrict: 'E',
             templateUrl: 'client/components/sidebar/main.view.ng.html',
             replace: true,
-            controller: function($scope) {
+            controller: function ($scope, $state) {
 
             },
             controllerAs: "sidebarMainCtrl"
