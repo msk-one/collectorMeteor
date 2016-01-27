@@ -1,10 +1,18 @@
-<section class="content-header">
-  <h1>
-    Welcome
-    <small>to Collector Meteor application.</small>
-  </h1>
-</section>
+<toolbar ng-show="collector.isLoggedIn"></toolbar>
+<main-sidebar ng-show="collector.isLoggedIn"></main-sidebar>
 
-<section class="content">
-  <page></page>
-</section>
+<div ng-show="collector.isLoggedIn" class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Welcome
+            <small>to Collector Meteor application.</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <page></page>
+    </section>
+</div>
+
+<control-sidebar ng-show="collector.isLoggedIn"></control-sidebar>
+<div ng-show="collector.isLoggedIn" class="control-sidebar-bg"></div>
