@@ -5,37 +5,42 @@ angular.module("collectorApp").directive('login', function () {
         controllerAs: 'login',
         controller: function ($scope, $reactive, $state) {
             $reactive(this).attach($scope);
-            var ctrl = this;
-
-            this.credentials = {
+            $scope.credentials = {
                 email: '',
                 password: ''
             };
 
-            this.error = '';
+            $scope.errorForm = '';
 
-            this.login = function () {
-                Meteor.loginWithPassword(this.credentials.email, this.credentials.password, function (err) {
+            //$reactive(this).attach($scope);
+            //var ctrl = this;
+
+            $scope.login = function () {
+                Meteor.loginWithPassword($scope.credentials.email, $scope.credentials.password, function (err) {
                     if (err) {
-                        if (err.error === 403) {
-                            Accounts.createUser(ctrl.credentials, function (err) {
+                        if (err.message === "User not found [403]") {
+                            Accounts.createUser($scope.credentials, function (err) {
                                 if (err) {
-                                    ctrl.error = err;
+                                    $scope.errorForm = err;
                                 }
                                 else {
                                     $state.go('main');
+                                    location.reload();
                                 }
                             });
                         }
                         else {
-                            ctrl.error = err;
+                            $scope.errorForm = err;
                         }
                     }
                     else {
                         $state.go('main');
+                        location.reload();
                     }
                 });
+                console.log($scope.errorForm);
             };
+
         }
     }
 });
