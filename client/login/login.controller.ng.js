@@ -6,38 +6,39 @@ angular.module("collectorApp").directive('login', function () {
         controller: function ($scope, $reactive, $state) {
             $reactive(this).attach($scope);
             $scope.credentials = {
-                email: '',
+                username: '',
                 password: ''
             };
 
             $scope.errorForm = '';
 
-            //$reactive(this).attach($scope);
-            //var ctrl = this;
 
             $scope.login = function () {
-                Meteor.loginWithPassword($scope.credentials.email, $scope.credentials.password, function (err) {
-                    if (err) {
-                        if (err.message === "User not found [403]") {
-                            Accounts.createUser($scope.credentials, function (err) {
-                                if (err) {
-                                    $scope.errorForm = err;
-                                }
-                                else {
-                                    $state.go('main');
-                                    location.reload();
-                                }
-                            });
+                setTimeout(function () {
+                    Meteor.loginWithPassword($scope.credentials.username, $scope.credentials.password, function (err) {
+                        if (err) {
+                            if (err.message === "User not found [403]") {
+                                Accounts.createUser($scope.credentials, function (err) {
+                                    if (err) {
+                                        $scope.errorForm = err;
+                                    }
+                                    else {
+                                        $state.go('main');
+                                        location.reload();
+                                    }
+                                });
+                            }
+                            else {
+                                $scope.errorForm = err;
+                            }
                         }
                         else {
-                            $scope.errorForm = err;
+                            $state.go('main');
+                            location.reload();
                         }
-                    }
-                    else {
-                        $state.go('main');
-                        location.reload();
-                    }
-                });
+                    });
+                }, 500);
+
                 console.log($scope.errorForm);
             };
 

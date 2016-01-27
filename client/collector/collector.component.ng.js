@@ -12,6 +12,9 @@ angular.module('collectorApp').directive('collector', function () {
                     },
                     currentUser: function() {
                         return Meteor.user();
+                    },
+                    currentUserId: function() {
+                        return Meteor.userId();
                     }
             });
 

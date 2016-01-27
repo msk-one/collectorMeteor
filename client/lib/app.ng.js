@@ -6,6 +6,10 @@ angular.module('collectorApp', [
   'accounts.ui'
 ]);
 
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
+});
+
 onReady = function() {
   angular.bootstrap(document, ['collectorApp']);
 };

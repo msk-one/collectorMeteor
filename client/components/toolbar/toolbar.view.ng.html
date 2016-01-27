@@ -13,8 +13,6 @@
         <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
-
-        <login-buttons></login-buttons>
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -24,24 +22,12 @@
                     <!-- Menu toggle button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-danger">2</span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li class="header">You have 2 notifications!</li>
+                        <li class="header">You have no new notifications!</li>
                         <li>
                             <!-- Inner Menu: contains the notifications -->
                             <ul class="menu">
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-usd text-aqua"></i> $5 to Adam should be returned soon!
-                                    </a>
-                                </li>
-                                <li><!-- start notification -->
-                                    <a href="#">
-                                        <i class="fa fa-cubes text-aqua"></i> GTA V to Msk should be returned soon!
-                                    </a>
-                                </li>
-                                <!-- end notification -->
                             </ul>
                         </li>
                     </ul>
@@ -52,17 +38,17 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- The user image in the navbar-->
-                        <img src="img/cinos.jpg" class="user-image" alt="User Image">
+                        <img src="img/avatar5.png" class="user-image" alt="User Image">
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">{{ collector.currentUser.emails[0].address }}</span>
+                        <span class="hidden-xs">{{ collector.currentUser.username }}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- The user image in the menu -->
                         <li class="user-header">
-                            <img src="img/cinos.jpg" class="img-circle" alt="User Image">
+                            <img src="img/avatar5.png" class="img-circle" alt="User Image">
                             <p>
-                                (username) - {{ collector.currentUser.emails[0].address }}
-                                <small>(status/acctype)</small>
+                                {{ collector.currentUserId }}
+                                <small>Regular user</small>
                             </p>
                         </li>
                         <li class="user-footer">
