@@ -20,6 +20,7 @@ angular.module('collectorApp').directive('collector', function () {
 
             this.logout = function() {
                 Accounts.logout();
+                location.reload();
             }
         }
     }

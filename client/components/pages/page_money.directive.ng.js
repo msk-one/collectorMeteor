@@ -7,7 +7,12 @@ angular.module('collectorApp')
             controller: function($scope, $http, $state, $reactive) {
                 $scope.entries = {};
 
-                $http({method: 'GET', url: 'http://msk.mini.pw.edu.pl/collector/api/GetEntriesForUser/70/AndType/1'}).
+                $scope.toAddNewMoneyEntry = function(type) {
+                    $state.go('addMon', {type: type});
+                    location.reload();
+                };
+
+                $http({method: 'GET', url: 'http://msk.mini.pw.edu.pl/collector/api/GetEntriesMoneyForUser/70/AndType/1'}).
                 then(function(response) {
                     $scope.entries = response.data;
                 }, function(response) {

@@ -35,15 +35,15 @@
                     <th>Priority</th>
                     <th>Actions</th>
                 </tr>
-                <tr>
-                    <td>John Doe</td>
-                    <td>Cinos150</td>
-                    <td>11-7-2016 01:11 AM</td>
-                    <td>11-7-2016 01:11 AM</td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                    <td>MyCategory</td>
-                    <td>20.5</td>
-                    <td><span class="label label-success">Low</span></td>
+                <tr ng-repeat="entry in entries">
+                    <td>{{ entry.title }}</td>
+                    <td>{{ entry.who }}</td>
+                    <td>{{ entry.date | date }}</td>
+                    <td>{{ entry.deadline | date }}</td>
+                    <td>{{ entry.descr }}</td>
+                    <td>{{ entry.Object.Category.cname }}</td>
+                    <td>{{ entry.Object.quantity }}</td>
+                    <td><span class="label label-success">{{ entry.priority == 0 ? 'Low' : 'Hot' }}</span></td>
                     <td><div class="btn-group">
                         <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
                         <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
