@@ -3,7 +3,7 @@ angular.module('collectorApp').directive('collector', function () {
         restrict: 'E',
         templateUrl: 'client/collector/collector.html',
         controllerAs: 'collector',
-        controller: function ($scope, $reactive) {
+        controller: function ($scope, $reactive, Session) {
             $reactive(this).attach($scope);
 
             this.helpers({
@@ -19,6 +19,7 @@ angular.module('collectorApp').directive('collector', function () {
             });
 
             this.logout = function() {
+                Session.destroy();
                 Accounts.logout();
                 location.reload();
             }

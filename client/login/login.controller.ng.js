@@ -1,9 +1,22 @@
+angular.module("collectorApp").service('Session', function () {
+    this.create = function (sessionId, userId, userRole) {
+        this.id = sessionId;
+        this.userId = userId;
+        this.userRole = userRole;
+    };
+    this.destroy = function () {
+        this.id = null;
+        this.userId = null;
+        this.userRole = null;
+    };
+});
+
 angular.module("collectorApp").directive('login', function () {
     return {
         restrict: 'E',
         templateUrl: 'client/login/login.view.ng.html',
         controllerAs: 'login',
-        controller: function ($http, $scope, $reactive, $state) {
+        controller: function ($http, $scope, $reactive, $state, Session) {
             $reactive(this).attach($scope);
             $scope.credentials = {
                 username: '',
@@ -40,6 +53,7 @@ angular.module("collectorApp").directive('login', function () {
                                     $scope.errorForm = err;
                                 }
                                 else {
+                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
                                     $state.go('main');
                                     location.reload();
                                 }
@@ -76,6 +90,7 @@ angular.module("collectorApp").directive('login', function () {
                                     $scope.errorForm = err;
                                 }
                                 else {
+                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
                                     $state.go('main');
                                     location.reload();
                                 }
@@ -90,6 +105,7 @@ angular.module("collectorApp").directive('login', function () {
                                     $scope.errorForm = err;
                                 }
                                 else {
+                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
                                     $state.go('main');
                                     location.reload();
                                 }
