@@ -4,7 +4,9 @@ angular.module('collectorApp')
             username: Meteor.user().username,
             password: '',
             password2: '',
-            email: Meteor.user().emails ? Meteor.user().emails[0] : '',
+            email: Meteor.user().emails ? Meteor.user().emails[0] : ''
+
+
         };
 
         $scope.errors = '';
