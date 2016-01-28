@@ -16,19 +16,23 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form name="profileForm" role="form">
+            <form name="profileForm" role="form" ng-submit="profileForm.$valid && changeUserData()">
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Username</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ collector.currentUser.username }}">
+                        <label for="inputLogin">Username</label>
+                        <input type="text" class="form-control" id="inputLogin" ng-model="usrdata.username" value="{{ collector.currentUser.username }}" required />
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword1">Password</label>
-                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                        <label for="inputPassword1">New Password</label>
+                        <input type="password" class="form-control" id="inputPassword1" ng-model="usrdata.password" placeholder="Password" required />
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword2">Password (repeat)</label>
-                        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                        <label for="inputPassword2">New Password (again)</label>
+                        <input type="password" class="form-control" id="inputPassword2" ng-model="usrdata.password2" placeholder="Password (again)" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">E-mail</label>
+                        <input type="email" class="form-control" id="inputEmail" ng-model="usrdata.email" value="{{ collector.currentUser.emails[0] }}" required />
                     </div>
                 </div>
                 <!-- /.box-body -->

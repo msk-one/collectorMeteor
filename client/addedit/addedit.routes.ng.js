@@ -1,14 +1,24 @@
 angular.module('collectorApp')
     .config(function ($stateProvider) {
         $stateProvider
-            .state('add', {
-                url: '/add',
-                templateUrl: 'client/profile/addeditM.view.ng.html',
-                controller: 'addCtrl'
+            .state('addObj', {
+                url: '/add/object/:type',
+                templateUrl: 'client/profile/addeditO.view.ng.html',
+                controller: 'addObjCtrl'
             })
-            .state('edit', {
-                url: '/edit/:id',
+            .state('addMon', {
+                url: '/add/money/:type',
                 templateUrl: 'client/profile/addeditM.view.ng.html',
-                controller: 'editCtrl'
+                controller: 'addMonCtrl'
+            })
+            .state('editObj', {
+                url: '/edit/object/:id',
+                templateUrl: 'client/profile/addeditO.view.ng.html',
+                controller: 'editObjCtrl'
+            })
+            .state('editMon', {
+                url: '/edit/money/:id',
+                templateUrl: 'client/profile/addeditM.view.ng.html',
+                controller: 'editMonCtrl'
             });
     });

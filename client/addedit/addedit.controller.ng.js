@@ -1,9 +1,19 @@
 angular.module('collectorApp')
-    .controller('addCtrl', function($scope) {
+    .controller('addMonCtrl', function($scope, $http, $state, $reactive) {
 
     });
 
 angular.module('collectorApp')
-    .controller('editCtrl', function($scope) {
+    .controller('editMonCtrl', function($scope, $http, $state, $reactive) {
+
+    });
+
+angular.module('collectorApp')
+    .controller('addObjCtrl', function($scope, $http, $state, $reactive) {
+
+    });
+
+angular.module('collectorApp')
+    .controller('editObjCtrl', function($scope, $http, $state, $reactive) {
 
     });
