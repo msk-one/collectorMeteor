@@ -42,34 +42,55 @@ angular.module('collectorApp')
                 ];
 
                 $scope.nCat = {
-                    cid: '',
                     cname: ''
                 };
 
+                $scope.ReturnCat = {
+                    cid: '',
+                    cname: '',
+                    "Objects": ''
+                };
+
                 $scope.addCategory = function() {
-                    //var data = $.param({
-                    //    json: JSON.stringify({
-                    //        cname: $scope.nCat.cname
-                    //    })
-                    //});
-                    //$http.post("http://msk.mini.pw.edu.pl/collector/api/Categories", data).success(function(data, status) {
-                    //    $scope.hello = data;
-                    //})
-                    $http({method: 'POST', url: 'http://msk.mini.pw.edu.pl/collector/api/Categories', data: $scope.nCat, headers: {
-                        'Content-Type': 'application/json'
-                    }}).
-                    then(function(response) {
-                        $scope.categories.push($scope.nCat);
-                    }, function(response) {
-                        console.log(response.status);
+
+                    $http.post('http://msk.mini.pw.edu.pl/collector/api/Categories', $scope.nCat,{
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+
+                    }).
+                    success(
+                        function(ReturnCat, status, headers, config) {
+
+                            $scope.categories.push(ReturnCat);
+                        }).error(function(ReturnCat, status, headers, config) {
+                        console.log(ReturnCat.cid);
                     });
 
                     $scope.nCat = {};
                 };
 
+
+
+
+
+
+
                 $scope.removeCategory = function(ctr) {
-                    var index = $scope.propCategories.indexOf(ctr);
-                    $scope.propCategories.splice(index, 1);
+                    var index = $scope.categories.indexOf(ctr);
+
+
+                    $http.delete('http://msk.mini.pw.edu.pl/collector/api/Categories/' +  ctr.cid,"",{
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+
+                    }).
+                    success(
+                        function(status, headers, config) {
+                            $scope.categories.splice(index, 1);
+                        }).error(function(ReturnCat, status, headers, config) {
+                        console.log(ReturnCat.cid);
+                    });
+
+
+
                 };
             },
             controllerAs: "sidebarControlCtrl"

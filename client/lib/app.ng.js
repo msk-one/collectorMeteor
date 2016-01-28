@@ -10,11 +10,21 @@ Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
 
+
+
+
 angular.module('collectorApp').config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.headers.common = {};
   $httpProvider.defaults.headers.post = {};
   $httpProvider.defaults.headers.put = {};
   $httpProvider.defaults.headers.patch = {};
+  $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+  $httpProvider.defaults.transformRequest = function(data){
+    if (data === undefined) {
+      return data;
+    }
+    return $.param(data);
+  }
 }
 ]);
 
