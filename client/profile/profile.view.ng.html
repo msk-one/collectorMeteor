@@ -1,0 +1,44 @@
+<toolbar ng-show="collector.isLoggedIn"></toolbar>
+<main-sidebar ng-show="collector.isLoggedIn"></main-sidebar>
+
+<div ng-show="collector.isLoggedIn" class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Edit
+            <small>your profile.</small>
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">User preferences</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form name="profileForm" role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" value="{{ collector.currentUser.username }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1">Password</label>
+                        <input type="password" class="form-control" id="inputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword2">Password (repeat)</label>
+                        <input type="password" class="form-control" id="inputPassword2" placeholder="Password">
+                    </div>
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-danger">Change</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
+
+<control-sidebar ng-show="collector.isLoggedIn"></control-sidebar>
+<div ng-show="collector.isLoggedIn" class="control-sidebar-bg"></div>

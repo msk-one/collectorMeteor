@@ -10,6 +10,14 @@ Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
 
+angular.module('collectorApp').config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.headers.common = {};
+  $httpProvider.defaults.headers.post = {};
+  $httpProvider.defaults.headers.put = {};
+  $httpProvider.defaults.headers.patch = {};
+}
+]);
+
 onReady = function() {
   angular.bootstrap(document, ['collectorApp']);
 };

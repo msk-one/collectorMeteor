@@ -9,6 +9,11 @@ angular.module('collectorApp')
                     $state.go('main');
                     location.reload();
                 };
+
+                $scope.redirectProfile = function () {
+                    $state.go('profile');
+                    location.reload();
+                };
             },
             controllerAs: "toolbarCtrl"
         };
