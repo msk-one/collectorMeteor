@@ -20,19 +20,19 @@
                 <div class="box-body">
                     <div class="form-group">
                         <label for="inputLogin">Username</label>
-                        <input type="text" class="form-control" id="inputLogin" ng-model="usrdata.username" value="{{ collector.currentUser.username }}" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword1">New Password</label>
-                        <input type="password" class="form-control" id="inputPassword1" ng-model="usrdata.password" placeholder="Password" required />
-                    </div>
-                    <div class="form-group">
-                        <label for="inputPassword2">New Password (again)</label>
-                        <input type="password" class="form-control" id="inputPassword2" ng-model="usrdata.password2" placeholder="Password (again)" required />
+                        <input type="text" class="form-control" id="inputLogin" ng-model="usrdata.username" required />
                     </div>
                     <div class="form-group">
                         <label for="inputEmail">E-mail</label>
-                        <input type="email" class="form-control" id="inputEmail" ng-model="usrdata.email" value="{{ collector.currentUser.emails[0] }}" required />
+                        <input type="email" class="form-control" id="inputEmail" ng-model="usrdata.email" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword1">Old Password</label>
+                        <input type="password" class="form-control" id="inputPassword1" ng-model="usrdata.password" placeholder="Password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword2">New Password</label>
+                        <input type="password" class="form-control" id="inputPassword2" ng-model="usrdata.password2" placeholder="Password (new)" />
                     </div>
                 </div>
                 <!-- /.box-body -->

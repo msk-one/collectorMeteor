@@ -43,8 +43,13 @@
                         <input type="datetime" class="form-control" id="inputDeadline" ng-model="entry.deadline" required />
                     </div>
                     <div class="form-group">
-                        <label for="inputAmount">Quantity</label>
+                        <label for="inputAmount">Amount</label>
                         <input type="number" class="form-control" id="inputAmount" ng-model="entry.amount" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="inputCurrency">Currency</label>
+                        <select id="inputCurrency" ng-model="entry.currency">
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="inputPriority">Priority</label>
