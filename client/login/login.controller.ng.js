@@ -1,22 +1,22 @@
-angular.module("collectorApp").service('Session', function () {
-    this.create = function (sessionId, userId, userRole) {
-        this.id = sessionId;
-        this.userId = userId;
-        this.userRole = userRole;
-    };
-    this.destroy = function () {
-        this.id = null;
-        this.userId = null;
-        this.userRole = null;
-    };
-});
+//angular.module("collectorApp").service('Session', function () {
+//    this.create = function (sessionId, userId, userRole) {
+//        this.id = sessionId;
+//        this.userId = userId;
+//        this.userRole = userRole;
+//    };
+//    this.destroy = function () {
+//        this.id = null;
+//        this.userId = null;
+//        this.userRole = null;
+//    };
+//});
 
 angular.module("collectorApp").directive('login', function () {
     return {
         restrict: 'E',
         templateUrl: 'client/login/login.view.ng.html',
         controllerAs: 'login',
-        controller: function ($http, $scope, $reactive, $state, Session) {
+        controller: function ($http, $scope, $reactive, $state) {
             $reactive(this).attach($scope);
             $scope.credentials = {
                 username: '',
@@ -34,34 +34,37 @@ angular.module("collectorApp").directive('login', function () {
                 "login": "",
                 "uid": -1,
                 "token": ""
-            }
+            };
 
             $scope.errorForm = '';
 
             $scope.login = function () {
                 $scope.returnCredentials.login = $scope.credentials.username;
                 $scope.returnCredentials.password = $scope.credentials.password;
-
-                $http.post('http://msk.mini.pw.edu.pl/collector/api/LoginUser', $scope.returnCredentials, {
-                    headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
-                }).success(
-                    function (returnRegisterUser, status, headers, config) {
-                        //Login success
-                        setTimeout(function () {
+                setTimeout(function () {
+                    $http.post('http://msk.mini.pw.edu.pl/collector/api/LoginUser', $scope.returnCredentials, {
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                    }).success(
+                        function (returnRegisterUser, status, headers, config) {
+                            //Login success
                             Meteor.loginWithPassword($scope.credentials.username, $scope.credentials.password, function (err) {
                                 if (err) {
                                     $scope.errorForm = err;
                                 }
                                 else {
-                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                    //Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                    //$cookies.put('token', returnRegisterUser.token);
+                                    //$cookies.put('uid', returnRegisterUser.uid);
+                                    Session.setDefaultAuth('token', returnRegisterUser.token);
+                                    Session.setDefaultAuth('uid', returnRegisterUser.uid);
                                     $state.go('main');
                                     location.reload();
                                 }
                             });
-                        }, 500);
-                    }).error(function (returnRegisterUser, status, headers, config) {
-                    $scope.errorForm = {reason: "Username and password do not match"};
-                });
+                        }).error(function (returnRegisterUser, status, headers, config) {
+                        $scope.errorForm = {reason: "Username and password do not match"};
+                    });
+                }, 500);
             };
 
             $scope.register = function () {
@@ -90,7 +93,11 @@ angular.module("collectorApp").directive('login', function () {
                                     $scope.errorForm = err;
                                 }
                                 else {
-                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                    //Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                    //$cookies.put('token', returnRegisterUser.token);
+                                    //$cookies.put('uid', returnRegisterUser.uid);
+                                    Session.setDefaultAuth('token', returnRegisterUser.token);
+                                    Session.setDefaultAuth('uid', returnRegisterUser.uid);
                                     $state.go('main');
                                     location.reload();
                                 }
@@ -105,7 +112,11 @@ angular.module("collectorApp").directive('login', function () {
                                     $scope.errorForm = err;
                                 }
                                 else {
-                                    Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                    //Session.create(returnRegisterUser.token, returnRegisterUser.uid, "regular");
+                                   // $cookies.put('token', returnRegisterUser.token);
+                                    //$cookies.put('uid', returnRegisterUser.uid);
+                                    Session.setDefaultAuth('token', returnRegisterUser.token);
+                                    Session.setDefaultAuth('uid', returnRegisterUser.uid);
                                     $state.go('main');
                                     location.reload();
                                 }
@@ -114,7 +125,7 @@ angular.module("collectorApp").directive('login', function () {
                             //console.log(returnRegisterUser.token);
 
                         }).error(function (returnRegisterUser, status, headers, config) {
-                            $scope.errorForm = {reason: "User already exists"};
+                        $scope.errorForm = {reason: "User already exists"};
                     });
                 }, 500);
             };

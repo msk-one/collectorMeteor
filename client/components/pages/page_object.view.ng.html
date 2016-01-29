@@ -7,17 +7,18 @@
             </h3>
 
             <div class="box-tools" ng-show="showBObject">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                    <select class="form-control pull-right">
-                        <option>Cat 1</option>
-                        <option>Cat 2</option>
-                    </select>
-                    <div class="input-group-btn">
-                        <button type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button>
-                        <button type="submit" class="btn btn-info">Add new entry</button>
+                <form name="categorySortForm" ng-submit="categorySortForm.$valid && showObjects(showBObject)">
+                    <div class="input-group input-group-sm" style="width: 300px;">
+                        <select class="form-control pull-right" ng-model="desiredCat">
+                            <option ng-repeat="category in categories" value="{{ category.cid }}">{{ category.cname }}
+                            </option>
+                        </select>
+                        <div class="input-group-btn">
+                            <button type="submit" class="btn btn-default"><i class="fa fa-refresh"></i></button>
+                            <button class="btn btn-info" ng-click="toAddNewObjectEntry(showBObject)">Add new entry</button>
+                        </div>
                     </div>
-                </div>
-
+                </form>
             </div>
         </div>
         <!-- /.box-header -->
@@ -44,10 +45,12 @@
                     <td>{{ entry.Object.Category.cname }}</td>
                     <td>{{ entry.Object.quantity }}</td>
                     <td><span class="label label-success">{{ entry.priority == 0 ? 'Low' : 'Hot' }}</span></td>
-                    <td><div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
-                    </div></td>
+                    <td>
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
+                        </div>
+                    </td>
                 </tr>
                 </tbody>
             </table>
