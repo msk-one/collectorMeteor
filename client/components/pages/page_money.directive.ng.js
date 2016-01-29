@@ -24,6 +24,10 @@ angular.module('collectorApp')
                     location.reload();
                 };
 
+                $scope.toRemoveMoneyEntry = function(entry) {
+
+                };
+
                 $scope.getFinalType = function(typeB) {
                     if (typeB === true) {
                         return 1;

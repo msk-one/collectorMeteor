@@ -23,7 +23,6 @@ angular.module("collectorApp").directive('login', function () {
                 password: ''
             };
 
-
             $scope.returnCredentials = {
                 "login": $scope.credentials.username,
                 "password": $scope.credentials.password

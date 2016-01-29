@@ -35,8 +35,8 @@
                     <td>{{ entry.amount }}</td>
                     <td><span class="label {{ entry.priority == 0 ? 'label-success' : 'label-danger' }}">{{ entry.priority == 0 ? 'Low' : 'Hot' }}</span></td>
                     <td><div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                        <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
+                        <button type="button" ng-click="toEditMoneyEntry(entry)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                        <button type="button" ng-click="toRemoveMoneyEntry(entry.id)" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
                     </div></td>
                 </tr>
                 </tbody>

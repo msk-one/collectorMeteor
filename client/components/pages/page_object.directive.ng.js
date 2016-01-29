@@ -33,6 +33,15 @@ angular.module('collectorApp')
                     location.reload();
                 };
 
+                $scope.toEditObjectEntry = function(entry) {
+                    $state.go('editObj', {id: entry.id});
+                    location.reload();
+                };
+
+                $scope.toRemoveObjectEntry = function(id) {
+
+                };
+
                 //if($scope.showBMoney == true) {
                 //    $http({
                 //        method: 'GET',

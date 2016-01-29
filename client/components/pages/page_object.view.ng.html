@@ -6,7 +6,7 @@
                 <b ng-show="showLObject">lend from you</b>
             </h3>
 
-            <div class="box-tools" ng-show="showBObject">
+            <div class="box-tools" ng-show="showBObject || showLObject">
                 <form name="categorySortForm" ng-submit="categorySortForm.$valid && showObjects(showBObject)">
                     <div class="input-group input-group-sm" style="width: 300px;">
                         <select class="form-control pull-right" ng-model="desiredCat">
@@ -47,8 +47,8 @@
                     <td><span class="label label-success">{{ entry.priority == 0 ? 'Low' : 'Hot' }}</span></td>
                     <td>
                         <div class="btn-group">
-                            <button type="button" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
-                            <button type="button" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
+                            <button type="button" ng-click="toEditObjectEntry(entry)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>
+                            <button type="button" ng-click="toRemoveObjectEntry(entry.id)" class="btn btn-sm btn-danger"><i class="fa fa-remove"></i></button>
                         </div>
                     </td>
                 </tr>
