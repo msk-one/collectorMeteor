@@ -25,7 +25,15 @@ angular.module('collectorApp')
                 };
 
                 $scope.toRemoveMoneyEntry = function(entry) {
-
+                    $http.delete('http://msk.mini.pw.edu.pl/collector/api/Entries/'+entry.id,{
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}
+                    }).
+                    success(
+                        function(ReturnCat, status, headers, config) {
+                            console.log("removed");
+                        }).error(function(ReturnCat, status, headers, config) {
+                            console.log("Error!");
+                    });
                 };
 
                 $scope.getFinalType = function(typeB) {

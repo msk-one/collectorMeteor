@@ -29,10 +29,10 @@
                 <tr ng-repeat="entry in entries">
                     <td>{{ entry.title }}</td>
                     <td>{{ entry.who }}</td>
-                    <td>{{ entry.date | date }}</td>
-                    <td>{{ entry.deadline | date }}</td>
+                    <td>{{ entry.date | date:"MM/dd/yyyy 'at' h:mma" }}</td>
+                    <td>{{ entry.deadline | date:"MM/dd/yyyy 'at' h:mma" }}</td>
                     <td>{{ entry.descr }}</td>
-                    <td>{{ entry.amount }}</td>
+                    <td>{{ entry.amount }} {{ entry.Currency.cursign }}</td>
                     <td><span class="label {{ entry.priority == 0 ? 'label-success' : 'label-danger' }}">{{ entry.priority == 0 ? 'Low' : 'Hot' }}</span></td>
                     <td><div class="btn-group">
                         <button type="button" ng-click="toEditMoneyEntry(entry)" class="btn btn-sm btn-warning"><i class="fa fa-edit"></i></button>

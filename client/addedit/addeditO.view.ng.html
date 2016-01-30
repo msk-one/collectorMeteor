@@ -16,11 +16,11 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form name="addEditOForm" role="form" ng-submit="addEditOForm.$valid && addEditObjectEntry(entry.type)">
+            <form name="addEditOForm" role="form" ng-submit="addEditOForm.$valid && addEditObjectEntry(newOEntry.type)">
                 <div class="box-body">
                     <div class="form-group">
                         <label for="inputType">Type</label>
-                        <select id="inputType" ng-model="entry.type">
+                        <select id="inputType" ng-model="newOEntry.type">
                             <option value="1">Borrowed</option>
                             <option value="2">Lend</option>
                         </select>
@@ -28,33 +28,42 @@
 
                     <div class="form-group">
                         <label for="inputName">Name</label>
-                        <input type="text" class="form-control" id="inputName" ng-model="entry.name" required/>
+                        <input type="text" class="form-control" id="inputName" ng-model="newOEntry.name" required/>
                     </div>
                     <div class="form-group">
                         <label for="inputWho">Who?</label>
-                        <input type="text" class="form-control" id="inputWho" ng-model="entry.who" required/>
+                        <input type="text" class="form-control" id="inputWho" ng-model="newOEntry.who" required/>
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea class="form-control" rows="3" id="inputDescription" ng-model="entry.descr"></textarea>
+                        <textarea class="form-control" rows="3" id="inputDescription" ng-model="newOEntry.descr"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="inputDeadline">Deadline</label>
-                        <input type="datetime" class="form-control" id="inputDeadline" ng-model="entry.deadline"
-                               required/>
+                        <label for="inputDateDeadline">Initial date and deadline</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </div>
+                            <input type="text" ng-model="newOEntry.deadline" class="form-control pull-right" id="inputDateDeadline">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputObjname">Object name:</label>
+                        <input type="text" class="form-control" id="inputObjname" ng-model="newObject.name" required/>
                     </div>
                     <div class="form-group">
                         <label for="inputQuantity">Quantity</label>
-                        <input type="number" class="form-control" id="inputQuantity" ng-model="entry.quantity" required/>
+                        <input type="number" class="form-control" id="inputQuantity" ng-model="newObject.quantity" required/>
                     </div>
                     <div class="form-group">
                         <label for="inputCategory">Category</label>
-                        <select id="inputCategory" ng-model="entry.category">
+                        <select id="inputCategory" ng-model="newOEntry.category">
+                            <option ng-repeat="category in categories" value="{{ category.cid }}">{{ category.cname }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputPriority">Priority</label>
-                        <select id="inputPriority" ng-model="entry.priority">
+                        <select id="inputPriority" ng-model="newOEntry.priority">
                             <option value="0">Low</option>
                             <option value="1">Hot</option>
                         </select>
@@ -62,7 +71,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">Add/Edit</button>
                 </div>
             </form>
         </div>
@@ -71,3 +80,6 @@
 
 <control-sidebar ng-show="collector.isLoggedIn"></control-sidebar>
 <div ng-show="collector.isLoggedIn" class="control-sidebar-bg"></div>
+<script>
+    $('#inputDateDeadline').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY hh:mm:ss'});
+</script>

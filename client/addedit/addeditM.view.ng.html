@@ -16,11 +16,11 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form name="addEditMForm" role="form" ng-submit="addEditMForm.$valid && addEditMoneyEntry(entry.type)">
+            <form name="addEditMForm" role="form" ng-submit="addEditMForm.$valid && addEditMoneyEntry(newMEntry.type)">
                 <div class="box-body">
                     <div class="form-group">
                         <label for="inputType">Type: </label>
-                        <select id="inputType" ng-model="entry.type">
+                        <select id="inputType" ng-model="newMEntry.typeid">
                             <option value="1">Borrowed</option>
                             <option value="2">Lend</option>
                         </select>
@@ -28,45 +28,52 @@
 
                     <div class="form-group">
                         <label for="inputName">Name</label>
-                        <input type="text" class="form-control" id="inputName" ng-model="entry.name" required />
+                        <input type="text" class="form-control" id="inputName" ng-model="newMEntry.title" required />
                     </div>
                     <div class="form-group">
                         <label for="inputWho">Who?</label>
-                        <input type="text" class="form-control" id="inputWho" ng-model="entry.who" required />
+                        <input type="text" class="form-control" id="inputWho" ng-model="newMEntry.who" required />
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Description</label>
-                        <textarea class="form-control" rows="3" id="inputDescription" ng-model="entry.descr"></textarea>
+                        <textarea class="form-control" rows="3" id="inputDescription" ng-model="newMEntry.descr"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="inputDeadline">Deadline</label>
-                        <input type="datetime" class="form-control" id="inputDeadline" ng-model="entry.deadline" required />
+                        <label for="inputDateDeadline">Initial date and deadline</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <input type="text" ng-model="newMEntry.deadline" class="form-control pull-right" id="inputDateDeadline">
+                            </div>
                     </div>
                     <div class="form-group">
                         <label for="inputAmount">Amount</label>
-                        <input type="number" class="form-control" id="inputAmount" ng-model="entry.amount" required />
+                        <input type="number" class="form-control" id="inputAmount" ng-model="newMEntry.amount" required />
                     </div>
                     <div class="form-group">
                         <label for="inputCurrency">Currency: </label>
-                        <select id="inputCurrency" ng-model="entry.currency">
+                        <select id="inputCurrency" ng-model="newMEntry.currencyid">
+                            <option ng-repeat="currency in currencies" value="{{ currency.crid }}">{{ currency.curlname }}</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputPriority">Priority: </label>
-                        <select id="inputPriority" ng-model="entry.priority">
+                        <select id="inputPriority" ng-model="newMEntry.priority">
                             <option value="0">Low</option>
                             <option value="1">Hot</option>
                         </select>
                     </div>
                 </div>
-                <!-- /.box-body -->
                 <div class="box-footer">
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">Add/Edit</button>
                 </div>
             </form>
         </div>
     </section>
 </div>
-
 <control-sidebar ng-show="collector.isLoggedIn"></control-sidebar>
 <div ng-show="collector.isLoggedIn" class="control-sidebar-bg"></div>
+<script>
+    $('#inputDateDeadline').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY hh:mm:ss'});
+</script>
